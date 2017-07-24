@@ -1,0 +1,23 @@
+This repo is to program Caesat Cipher in C. 
+Files included in this repo: 
+  caesar.h (header file)
+  caesar.c (source file)
+  caesar_main.c (main function)
+  testCase.txt (includes the testcases implemented in main function and epected result for each test case)
+  out (the executable binary file)
+
+This program does not include error handling. 
+(I know it is a good practice to include it :)
+The input string format is always assumed correct. 
+Ex: number:string -> 100:23#$AB
+number will be between -1000000 ~ 1000000., string length will be from 1 ~ 200 characters.
+
+How to encode:
+you only encode upper case, lower case characters and digits. Any other special characters will remain the same. 
+the number before colon represent number of shifts (right or left) through the alphabet. 
+The alphabet is treated as being circular so that the first letter follows after the last letter, 
+and the last letter precedes the first letter. (MICP_Week1 power point)
+If it is positive number, right shift
+If it is negative number, left shift. 
+Ex: "1", A -> B, a -> b, 1 -> 2
+Ex: "-1", A -> Z, b -> a, 1 -> 0

@@ -1,0 +1,35 @@
+//Test Cases 
+//ER = Expected Result
+
+1. 0:A2c //the string won't change
+   ER = A2c
+
+2. 2:A2c //with positive number
+   ER = C4e
+
+3. -2:A2c //with negative number
+   ER = Y0a
+
+4. 3:A 2 //with a space
+   ER = D 5
+
+5. 4:Ab22@# c //with special character
+   ER = Ef66@# g
+
+6. 24:Ab1@ X //num of right shifts less than 26
+   ER = Yz5@ V
+
+7. -24:Ab1@ X //num of left shifts less than 26
+   ER = Cd7@ Z
+
+8. 200:2b! //bigger num of shift
+   ER = 2t!
+
+9. -200:2b! 
+   ER = 2j!
+
+10. 1000000:2A%89Cd //edge case, biggest positvie number
+	ER = 2O%89Qr
+
+11. -1000000:2A%89Cd //edge case, smallest negative number
+	ER = 2M%89Op
