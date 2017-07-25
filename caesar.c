@@ -10,20 +10,20 @@ int _CheckNumOfShifts(int num, int* ALPshift, int* DGshift);
 void _EncodeChar(char* add_char, int shiftDirect, int modValue, int numShift, int arraySize);
 
 //Function Definitions 
-Input GetInputStringInfo(char* string)
+Input GetInputStringInfo(char* inputString)
 {
 	Input stringInfo;
 	//Get number of shifts
-	stringInfo.numShift = atoi(strtok(string, ":"));
+	stringInfo.numShift = atoi(strtok(inputString, ":"));
 	
 	//Get the actual Input string and malloc it 
-	char* actstring = strtok(NULL, "\0");
-	char* malactstring = malloc(sizeof(*malactstring) * (strlen(actstring) + 1));
-	strcpy(malactstring, actstring);
+	char* actualString = strtok(NULL, "\0");
+	char* malactstring = malloc(sizeof(*malactstring) * (strlen(actualString) + 1)); 
+	strcpy(malactstring, actualString);
 	stringInfo.string = malactstring;
 
 	//Get length of the actual Input string
-	stringInfo.length = strlen(actstring);
+	stringInfo.length = strlen(actualString);
 	
 	return(stringInfo);
 }
@@ -92,24 +92,24 @@ void EncodedString(Input stringInfo)
 		return;
 	}
 
-	char* string = stringInfo.string; 
+	char* actualString = stringInfo.string; 
 	//encode when num of shift is not 0 
-    int c = 0; //count the current pointer position in string
+    	int c = 0; //count the current pointer position in actual string
 	while(c < length)
 	{
-		char current = string[c]; 
+		char current = actualString[c]; 
 		int attribute = _CheckChar(current); //attribute of that char
 		if(attribute == UPALP && ALPshift != 0)
 		{
-			_EncodeChar(&(string[c]), shiftDirect, 65, ALPshift, 26);
+			_EncodeChar(&(actualString[c]), shiftDirect, 65, ALPshift, 26);
 		}
 		else if(attribute == LWALP && ALPshift != 0)
 		{
-			_EncodeChar(&(string[c]), shiftDirect, 97, ALPshift, 26);
+			_EncodeChar(&(actualString[c]), shiftDirect, 97, ALPshift, 26);
 		}
 		else if(attribute == DIGIT && DIGshift != 0)
 		{
-			_EncodeChar(&(string[c]), shiftDirect, 48, DIGshift, 10);
+			_EncodeChar(&(actualString[c]), shiftDirect, 48, DIGshift, 10);
 		}
 		c++;
 	}
